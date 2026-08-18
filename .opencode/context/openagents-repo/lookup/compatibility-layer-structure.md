@@ -161,7 +161,7 @@ compatibility-layer/
 
 ## Reference
 
-- **Issue**: https://github.com/darrenhinde/OpenAgentsControl/issues/141
+- **Issue**: https://github.com/niksmac/OpenAgentsControl/issues/141
 - **Branch**: `devalexanderdaza/issue141`
 
 **Related**:

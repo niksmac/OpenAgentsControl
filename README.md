@@ -18,12 +18,12 @@
 **Model Agnostic:** Claude • GPT • Gemini • MiniMax • Local models
 
 
-[![GitHub stars](https://img.shields.io/github/stars/darrenhinde/OpenAgentsControl?style=flat-square&logo=github&labelColor=black&color=ffcb47)](https://github.com/darrenhinde/OpenAgentsControl/stargazers)
+[![GitHub stars](https://img.shields.io/github/stars/niksmac/OpenAgentsControl?style=flat-square&logo=github&labelColor=black&color=ffcb47)](https://github.com/niksmac/OpenAgentsControl/stargazers)
 [![X Follow](https://img.shields.io/twitter/follow/DarrenBuildsAI?style=flat-square&logo=x&labelColor=black&color=1DA1F2)](https://x.com/DarrenBuildsAI)
 [![License: MIT](https://img.shields.io/badge/License-MIT-3fb950?style=flat-square&labelColor=black)](https://opensource.org/licenses/MIT)
-[![Last Commit](https://img.shields.io/github/last-commit/darrenhinde/OpenAgentsControl?style=flat-square&labelColor=black&color=8957e5)](https://github.com/darrenhinde/OpenAgentsControl/commits/main)
+[![Last Commit](https://img.shields.io/github/last-commit/niksmac/OpenAgentsControl?style=flat-square&labelColor=black&color=8957e5)](https://github.com/niksmac/OpenAgentsControl/commits/main)
 
-[🚀 Quick Start](#-quick-start) • [💻 Show Me Code](#-example-workflow) • [🗺️ Roadmap](https://github.com/darrenhinde/OpenAgentsControl/projects) • [💬 Community](https://nextsystems.ai)
+[🚀 Quick Start](#-quick-start) • [💻 Show Me Code](#-example-workflow) • [🗺️ Roadmap](https://github.com/niksmac/OpenAgentsControl/projects) • [💬 Community](https://nextsystems.ai)
 
 </div>
 
@@ -109,7 +109,7 @@ Use any AI model (Claude, GPT, Gemini, local). No vendor lock-in.
 - **Aider:** Simple file edits, no team coordination
 - **Oh My OpenCode:** Need autonomous execution with parallel agents (speed over control)
 
-> **Full comparison:** [Read detailed analysis →](https://github.com/darrenhinde/OpenAgentsControl/discussions/116)
+> **Full comparison:** [Read detailed analysis →](https://github.com/niksmac/OpenAgentsControl/discussions/116)
 
 ---
 
@@ -122,21 +122,21 @@ Use any AI model (Claude, GPT, Gemini, local). No vendor lock-in.
 **One command:**
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/darrenhinde/OpenAgentsControl/main/install.sh | bash -s developer
+curl -fsSL https://raw.githubusercontent.com/niksmac/OpenAgentsControl/main/install.sh | bash -s developer
 ```
 
 <sub>The installer will set up OpenCode CLI if you don't have it yet.</sub>
 
 **Or interactive:**
 ```bash
-curl -fsSL https://raw.githubusercontent.com/darrenhinde/OpenAgentsControl/main/install.sh -o install.sh
+curl -fsSL https://raw.githubusercontent.com/niksmac/OpenAgentsControl/main/install.sh -o install.sh
 bash install.sh
 ```
 
 ### Keep Updated
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/darrenhinde/OpenAgentsControl/main/update.sh | bash
+curl -fsSL https://raw.githubusercontent.com/niksmac/OpenAgentsControl/main/update.sh | bash
 ```
 
 > Use `--install-dir PATH` if you installed to a custom location (e.g. `~/.config/opencode`).
@@ -169,7 +169,7 @@ opencode --agent OpenAgent
 
 1. Register the marketplace:
 ```bash
-/plugin marketplace add darrenhinde/OpenAgentsControl
+/plugin marketplace add niksmac/OpenAgentsControl
 ```
 
 2. Install the plugin:
@@ -732,7 +732,7 @@ A: OAC has editable agents (not baked-in), approval gates (not auto-execute), co
 A: OAC has team patterns, context system, approval workflow, and smart pattern discovery. Aider is file-based only.
 
 **Q: How does this compare to Oh My OpenCode?**  
-A: Both are built on OpenCode. OAC focuses on **control & repeatability** (approval gates, pattern control, team standards). Oh My OpenCode focuses on **autonomy & speed** (parallel agents, auto-execution). [Read detailed comparison →](https://github.com/darrenhinde/OpenAgentsControl/discussions/116)
+A: Both are built on OpenCode. OAC focuses on **control & repeatability** (approval gates, pattern control, team standards). Oh My OpenCode focuses on **autonomy & speed** (parallel agents, auto-execution). [Read detailed comparison →](https://github.com/niksmac/OpenAgentsControl/discussions/116)
 
 **Q: When should I NOT use OAC?**  
 A: If you want fully autonomous execution without approval gates, or if you don't have established coding patterns yet.
@@ -756,7 +756,7 @@ A: Local (`.opencode/` in your project) is recommended — patterns are committe
 
 ### 🚀 See What's Coming Next
 
-Check out our [**Project Board**](https://github.com/darrenhinde/OpenAgentsControl/projects) to see:
+Check out our [**Project Board**](https://github.com/niksmac/OpenAgentsControl/projects) to see:
 - 🔨 **In Progress** - Features being built right now
 - 📋 **Planned** - What's coming soon
 - 💡 **Ideas** - Future enhancements under consideration
@@ -774,9 +774,9 @@ Check out our [**Project Board**](https://github.com/darrenhinde/OpenAgentsContr
 ### 💬 Have Ideas?
 
 We'd love to hear from you! 
-- 💡 [**Submit Feature Requests**](https://github.com/darrenhinde/OpenAgentsControl/issues/new?labels=enhancement)
-- 🐛 [**Report Bugs**](https://github.com/darrenhinde/OpenAgentsControl/issues/new?labels=bug)
-- 💬 [**Join Discussions**](https://github.com/darrenhinde/OpenAgentsControl/discussions)
+- 💡 [**Submit Feature Requests**](https://github.com/niksmac/OpenAgentsControl/issues/new?labels=enhancement)
+- 🐛 [**Report Bugs**](https://github.com/niksmac/OpenAgentsControl/issues/new?labels=bug)
+- 💬 [**Join Discussions**](https://github.com/niksmac/OpenAgentsControl/discussions)
 
 **Star the repo** ⭐ to stay updated with new releases!
 

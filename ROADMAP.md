@@ -52,7 +52,7 @@ Visit the [GitHub Project](https://github.com/users/darrenhinde/projects/2) to s
 Create an issue with the `idea` label:
 ```bash
 gh issue create \
-  --repo darrenhinde/OpenAgentsControl \
+  --repo niksmac/OpenAgentsControl \
   --title "Your idea title" \
   --body "Description of your idea..." \
   --label "idea"
@@ -61,10 +61,10 @@ gh issue create \
 ### Track Progress
 ```bash
 # List all ideas
-gh issue list --repo darrenhinde/OpenAgentsControl --label idea
+gh issue list --repo niksmac/OpenAgentsControl --label idea
 
 # View specific issue
-gh issue view 123 --repo darrenhinde/OpenAgentsControl
+gh issue view 123 --repo niksmac/OpenAgentsControl
 ```
 
 ---

@@ -150,7 +150,7 @@ Legend: ✅ Full support, ⚠️ Partial support, ❌ Not supported
 ## Reference
 
 **Implementation**: `packages/compatibility-layer/src/adapters/`
-**Issue**: https://github.com/darrenhinde/OpenAgentsControl/issues/141
+**Issue**: https://github.com/niksmac/OpenAgentsControl/issues/141
 
 **Related**:
 - lookup/compatibility-layer-progress.md

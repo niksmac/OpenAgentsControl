@@ -2,7 +2,7 @@
 
 _Repository-recovery Task 09 — prove that untrusted (fork) code reaches no secret
 and no write token, and that required checks fail closed._
-_Repository: `darrenhinde/OpenAgentsControl` (public). Date: 2026-07-15._
+_Repository: `niksmac/OpenAgentsControl` (public). Date: 2026-07-15._
 _Validated at commit `699b2d7` (PR #336, phase-1 CI hardening) plus the
 `persist-credentials` follow-up on this branch._
 
@@ -300,9 +300,9 @@ two observations plus one repository-level gap; the disposition of each is below
 
 | Step | Command | Result |
 |------|---------|--------|
-| Before | `GET /repos/darrenhinde/OpenAgentsControl/actions/permissions/workflow` | `{"default_workflow_permissions":"write","can_approve_pull_request_reviews":true}` |
+| Before | `GET /repos/niksmac/OpenAgentsControl/actions/permissions/workflow` | `{"default_workflow_permissions":"write","can_approve_pull_request_reviews":true}` |
 | Change | `PUT …/actions/permissions/workflow -F default_workflow_permissions=read -F can_approve_pull_request_reviews=false` | `HTTP 204` |
-| Read-back | `GET /repos/darrenhinde/OpenAgentsControl/actions/permissions/workflow` | `{"default_workflow_permissions":"read","can_approve_pull_request_reviews":false}` |
+| Read-back | `GET /repos/niksmac/OpenAgentsControl/actions/permissions/workflow` | `{"default_workflow_permissions":"read","can_approve_pull_request_reviews":false}` |
 
 Nothing breaks today: every current workflow already declares an explicit
 `permissions:` block, so none relied on the write default. New workflows now

@@ -21,22 +21,22 @@ This guide covers how to work with GitHub issues and the project board to track 
 
 ```bash
 # List issues
-gh issue list --repo darrenhinde/OpenAgentsControl
+gh issue list --repo niksmac/OpenAgentsControl
 
 # Create issue
-gh issue create --repo darrenhinde/OpenAgentsControl --title "Title" --body "Body" --label "label1,label2"
+gh issue create --repo niksmac/OpenAgentsControl --title "Title" --body "Body" --label "label1,label2"
 
 # Add issue to project
-gh project item-add 2 --owner darrenhinde --url https://github.com/darrenhinde/OpenAgentsControl/issues/NUMBER
+gh project item-add 2 --owner darrenhinde --url https://github.com/niksmac/OpenAgentsControl/issues/NUMBER
 
 # View issue
-gh issue view NUMBER --repo darrenhinde/OpenAgentsControl
+gh issue view NUMBER --repo niksmac/OpenAgentsControl
 
 # Update issue
-gh issue edit NUMBER --repo darrenhinde/OpenAgentsControl --add-label "new-label"
+gh issue edit NUMBER --repo niksmac/OpenAgentsControl --add-label "new-label"
 
 # Close issue
-gh issue close NUMBER --repo darrenhinde/OpenAgentsControl
+gh issue close NUMBER --repo niksmac/OpenAgentsControl
 ```
 
 ---
@@ -81,14 +81,14 @@ gh issue close NUMBER --repo darrenhinde/OpenAgentsControl
 ```bash
 # Basic issue
 gh issue create \
-  --repo darrenhinde/OpenAgentsControl \
+  --repo niksmac/OpenAgentsControl \
   --title "Add new feature X" \
   --body "Description of feature" \
   --label "feature,priority-medium"
 
 # Feature with detailed body
 gh issue create \
-  --repo darrenhinde/OpenAgentsControl \
+  --repo niksmac/OpenAgentsControl \
   --title "Build plugin system" \
   --label "feature,framework,priority-high" \
   --body "$(cat <<'EOF'
@@ -120,7 +120,7 @@ EOF
 # Add issue to project
 gh project item-add 2 \
   --owner darrenhinde \
-  --url https://github.com/darrenhinde/OpenAgentsControl/issues/NUMBER
+  --url https://github.com/niksmac/OpenAgentsControl/issues/NUMBER
 ```
 
 ### Add Multiple Issues
@@ -130,7 +130,7 @@ gh project item-add 2 \
 for i in {137..142}; do
   gh project item-add 2 \
     --owner darrenhinde \
-    --url https://github.com/darrenhinde/OpenAgentsControl/issues/$i
+    --url https://github.com/niksmac/OpenAgentsControl/issues/$i
 done
 ```
 
@@ -165,12 +165,12 @@ gh project item-list 2 --owner darrenhinde --format json | jq '.items[] | {title
 ```bash
 # Assign to yourself
 gh issue edit NUMBER \
-  --repo darrenhinde/OpenAgentsControl \
+  --repo niksmac/OpenAgentsControl \
   --add-assignee @me
 
 # Assign to someone else
 gh issue edit NUMBER \
-  --repo darrenhinde/OpenAgentsControl \
+  --repo niksmac/OpenAgentsControl \
   --add-assignee username
 ```
 
@@ -182,7 +182,7 @@ gh issue edit NUMBER \
 
 1. **Assign issue to yourself**
    ```bash
-   gh issue edit NUMBER --repo darrenhinde/OpenAgentsControl --add-assignee @me
+   gh issue edit NUMBER --repo niksmac/OpenAgentsControl --add-assignee @me
    ```
 
 2. **Move to "In Progress"** (via web UI)
@@ -202,7 +202,7 @@ gh issue edit NUMBER \
 ```bash
 # Add comment to issue
 gh issue comment NUMBER \
-  --repo darrenhinde/OpenAgentsControl \
+  --repo niksmac/OpenAgentsControl \
   --body "Progress update: Completed X, working on Y"
 ```
 
@@ -211,7 +211,7 @@ gh issue comment NUMBER \
 1. **Create PR**
    ```bash
    gh pr create \
-     --repo darrenhinde/OpenAgentsControl \
+     --repo niksmac/OpenAgentsControl \
      --title "Fix #NUMBER: Description" \
      --body "Closes #NUMBER\n\nChanges:\n- Change 1\n- Change 2"
    ```
@@ -254,14 +254,14 @@ For complex features, create parent issue and subtasks:
 ```bash
 # Parent issue
 gh issue create \
-  --repo darrenhinde/OpenAgentsControl \
+  --repo niksmac/OpenAgentsControl \
   --title "[EPIC] Plugin System" \
   --label "feature,framework,priority-high" \
   --body "Parent issue for plugin system work"
 
 # Subtask issues
 gh issue create \
-  --repo darrenhinde/OpenAgentsControl \
+  --repo niksmac/OpenAgentsControl \
   --title "Plugin manifest system" \
   --label "feature" \
   --body "Part of #PARENT_NUMBER\n\nImplement plugin.json manifest"

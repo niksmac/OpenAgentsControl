@@ -2,7 +2,7 @@
   "version": "1.0.0",
   "profile": "essential",
   "source": {
-    "repository": "darrenhinde/OpenAgentsControl",
+    "repository": "niksmac/OpenAgentsControl",
     "branch": "main",
     "commit": "5f4991633f5349385859a08da76c8b33f3a033e1",
     "downloaded_at": "2026-02-16T12:20:32.201Z"

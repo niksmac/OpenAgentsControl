@@ -167,12 +167,12 @@ rg -n 'has-evals|outputs\.evals|has-docs|outputs\.docs|has-workflows|outputs\.wo
 ruby -e 'require "yaml"; Dir[".github/workflows/*.{yml,yaml}"].each { |f| YAML.safe_load(File.read(f), aliases: true); puts f }'
 
 # Inspect repository-side security settings
-gh api repos/darrenhinde/OpenAgentsControl/actions/permissions/workflow
-gh api repos/darrenhinde/OpenAgentsControl/actions/permissions
-gh api repos/darrenhinde/OpenAgentsControl/actions/permissions/fork-pr-contributor-approval
-gh api repos/darrenhinde/OpenAgentsControl/rulesets
-gh api repos/darrenhinde/OpenAgentsControl/private-vulnerability-reporting
-gh api repos/darrenhinde/OpenAgentsControl/code-scanning/default-setup
+gh api repos/niksmac/OpenAgentsControl/actions/permissions/workflow
+gh api repos/niksmac/OpenAgentsControl/actions/permissions
+gh api repos/niksmac/OpenAgentsControl/actions/permissions/fork-pr-contributor-approval
+gh api repos/niksmac/OpenAgentsControl/rulesets
+gh api repos/niksmac/OpenAgentsControl/private-vulnerability-reporting
+gh api repos/niksmac/OpenAgentsControl/code-scanning/default-setup
 ```
 
 ## Validation for This Baseline

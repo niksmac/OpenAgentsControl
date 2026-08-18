@@ -106,7 +106,7 @@ console.log(result.warnings) // Feature degradation warnings
 
 ## Implementation Status
 
-**Issue #141**: https://github.com/darrenhinde/OpenAgentsControl/issues/141
+**Issue #141**: https://github.com/niksmac/OpenAgentsControl/issues/141
 
 **Progress**: 28.13% (9/32 subtasks)
 - ✅ Phase 1 (Foundation): 100% complete - 1,475 lines
