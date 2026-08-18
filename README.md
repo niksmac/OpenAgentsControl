@@ -471,22 +471,22 @@ Your coding standards automatically loaded by agents:
 
 ### How Context Resolution Works
 
-ContextScout discovers context files using a **local-first** approach:
+ContextScout resolves context with a strict **local-first** contract:
 
 ```
-1. Check local: .opencode/context/core/navigation.md
-   ↓ Found? → Use local for everything. Done.
-   ↓ Not found?
-2. Check global: ~/.config/opencode/context/core/navigation.md
-   ↓ Found? → Use global for core/ files only.
-   ↓ Not found? → Proceed without core context.
+1. Read local: .opencode/context/core/navigation.md
+   ↓ Exists? → Use local for everything, including core. Done.
+   ↓ Missing?
+2. If paths.json has a global path, read ~/.config/opencode/context/core/navigation.md
+   ↓ Exists? → Use global for core/ only.
+   ↓ Missing? → Proceed without core context.
 ```
 
 **Key rules:**
-- **Local always wins** — if you installed locally, global is never checked
-- **Global fallback is only for `core/`** (standards, workflows, guides) — universal files that are the same across projects
+- **Local always wins** — if local `core/` exists, global is never checked
+- **Global fallback is only for `core/`** — standards, workflows, and guides; project-specific domains always stay local
 - **Project intelligence is always local** — your tech stack, patterns, and naming conventions live in `.opencode/context/project-intelligence/` and are never loaded from global
-- **One-time check** — ContextScout resolves the core location once at startup (max 2 glob checks), not per-file
+- **Per-invocation resolution** — ContextScout re-checks local-vs-global on every invocation, so a transient miss can't poison later tasks
 
 **Common setups:**
 
