@@ -248,6 +248,22 @@
         "category": "development"
       },
       {
+        "id": "mobile-design-specialist",
+        "name": "MobileDesignSpecialist",
+        "type": "subagent",
+        "path": ".opencode/agent/subagents/development/mobile-design-specialist.md",
+        "description": "Expert in mobile UI design, platform conventions, accessibility, and design systems",
+        "tags": [
+          "mobile",
+          "ios",
+          "android",
+          "design",
+          "ui"
+        ],
+        "dependencies": [],
+        "category": "development"
+      },
+      {
         "id": "devops-specialist",
         "name": "OpenDevopsSpecialist",
         "type": "subagent",
@@ -3200,6 +3216,7 @@
         "agent:opencoder",
         "subagent:task-manager",
         "subagent:frontend-specialist",
+        "subagent:mobile-design-specialist",
         "subagent:devops-specialist",
         "subagent:documentation",
         "subagent:coder-agent",
@@ -3282,6 +3299,7 @@
         "agent:data-analyst",
         "subagent:task-manager",
         "subagent:frontend-specialist",
+        "subagent:mobile-design-specialist",
         "subagent:devops-specialist",
         "subagent:documentation",
         "subagent:coder-agent",
@@ -3340,6 +3358,7 @@
         "agent:data-analyst",
         "subagent:task-manager",
         "subagent:frontend-specialist",
+        "subagent:mobile-design-specialist",
         "subagent:devops-specialist",
         "subagent:documentation",
         "subagent:coder-agent",

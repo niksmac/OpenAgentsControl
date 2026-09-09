@@ -142,6 +142,7 @@ task(
 
 **Agents**:
 - `development/frontend-specialist` - React, Vue, modern CSS
+- `development/mobile-design-specialist` - iOS, Android, mobile UI/UX
 - `development/backend-specialist` - APIs, databases, server-side
 - `development/devops-specialist` - CI/CD, infrastructure
 - `development/codebase-agent` - Multi-language implementation

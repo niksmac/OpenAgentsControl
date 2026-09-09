@@ -236,6 +236,8 @@ export class TestRunner {
       'OpenDevopsSpecialist': 'development/devops-specialist.md',
       'frontend-specialist': 'development/frontend-specialist.md',
       'OpenFrontendSpecialist': 'development/frontend-specialist.md',
+      'mobile-design-specialist': 'development/mobile-design-specialist.md',
+      'MobileDesignSpecialist': 'development/mobile-design-specialist.md',
       'backend-specialist': 'development/backend-specialist.md',
       'OpenBackendSpecialist': 'development/backend-specialist.md',
       'technical-writer': 'content/technical-writer.md',
