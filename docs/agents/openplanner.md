@@ -23,11 +23,12 @@
 OpenPlanner is a **planning specialist**. It reads your repo, loads your
 standards via ContextScout, and produces an implementation plan a competent
 engineer (or OpenCoder) can execute without asking clarifying questions.
-It never writes source code — harness-enforced: edit/write are denied
-everywhere except `.tmp/plans/` (scoped-write permission block).
+Plan-first by default: it writes plan artifacts to `.tmp/plans/` freely,
+writes elsewhere only when you explicitly ask (harness: `.tmp/plans/**`
+allow, everything else ask, secrets/node_modules/.git deny).
 
 **Key Characteristics:**
-- 📋 **Plan-only** - produces plans, never code (`no_implementation` hard constraint)
+- 📋 **Plan-first** - defaults to plans; writes elsewhere only on explicit user request
 - 🔍 **Repo-grounded** - every file path verified, never invented; unknowns marked ASSUMPTION
 - 🖼️ **Multi-input** - spec files, screenshots/mockups, raw instructions, bug reports
 - ✅ **Approval-gated** - lightweight draft approved before any plan files are written
