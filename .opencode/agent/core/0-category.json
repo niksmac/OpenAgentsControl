@@ -36,6 +36,22 @@
         "core/standards/patterns",
         "core/standards/tests"
       ]
+    },
+    "openplanner": {
+      "description": "Planning specialist - repo-grounded implementation plans",
+      "commonSubagents": [
+        "subagents/planning/*",
+        "subagents/core/task-manager",
+        "subagents/core/documentation"
+      ],
+      "commonTools": [
+        "env"
+      ],
+      "commonContext": [
+        "core/standards/code",
+        "core/standards/patterns",
+        "core/standards/tests"
+      ]
     }
   }
 }

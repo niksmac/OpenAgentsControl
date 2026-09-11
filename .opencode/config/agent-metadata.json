@@ -49,6 +49,30 @@
         "context:external-libraries-workflow"
       ]
     },
+    "openplanner": {
+      "id": "openplanner",
+      "name": "OpenPlanner",
+      "category": "core",
+      "type": "agent",
+      "version": "1.0.0",
+      "author": "opencode",
+      "tags": ["planning", "analysis", "design"],
+      "dependencies": [
+        "subagent:documentation",
+        "subagent:task-manager",
+        "subagent:architecture-analyzer",
+        "subagent:story-mapper",
+        "subagent:prioritization-engine",
+        "subagent:contract-manager",
+        "subagent:adr-manager",
+        "subagent:contextscout",
+        "subagent:externalscout",
+        "context:standards-code",
+        "context:task-delegation-basics",
+        "context:component-planning",
+        "context:external-libraries-workflow"
+      ]
+    },
     "repo-manager": {
       "id": "repo-manager",
       "name": "Repo Manager",
@@ -140,6 +164,56 @@
       "dependencies": [
         "context:task-delegation-basics"
       ]
+    },
+    "architecture-analyzer": {
+      "id": "architecture-analyzer",
+      "name": "ArchitectureAnalyzer",
+      "category": "subagents/planning",
+      "type": "subagent",
+      "version": "1.0.0",
+      "author": "opencode",
+      "tags": ["planning", "architecture", "ddd"],
+      "dependencies": []
+    },
+    "story-mapper": {
+      "id": "story-mapper",
+      "name": "StoryMapper",
+      "category": "subagents/planning",
+      "type": "subagent",
+      "version": "1.0.0",
+      "author": "opencode",
+      "tags": ["planning", "stories", "user-journeys"],
+      "dependencies": []
+    },
+    "prioritization-engine": {
+      "id": "prioritization-engine",
+      "name": "PrioritizationEngine",
+      "category": "subagents/planning",
+      "type": "subagent",
+      "version": "1.0.0",
+      "author": "opencode",
+      "tags": ["planning", "prioritization", "mvp"],
+      "dependencies": []
+    },
+    "contract-manager": {
+      "id": "contract-manager",
+      "name": "ContractManager",
+      "category": "subagents/planning",
+      "type": "subagent",
+      "version": "1.0.0",
+      "author": "opencode",
+      "tags": ["planning", "contracts", "api"],
+      "dependencies": []
+    },
+    "adr-manager": {
+      "id": "adr-manager",
+      "name": "ADRManager",
+      "category": "subagents/planning",
+      "type": "subagent",
+      "version": "1.0.0",
+      "author": "opencode",
+      "tags": ["planning", "architecture", "decisions"],
+      "dependencies": []
     },
     "batch-executor": {
       "id": "batch-executor",

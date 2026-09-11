@@ -1,0 +1,52 @@
+id: plan-grounding
+name: "Plan Grounding: OpenPlanner produces repo-verified plan, no code"
+description: |
+  Core differentiator test for the planning agent.
+  Agent receives a small feature request against the repo under test.
+
+  Expected workflow:
+  1. Agent calls ContextScout for discovery (no approval needed)
+  2. Agent reads repo files to verify paths (no invented files)
+  3. Agent presents Stage 4 draft and requests approval (approval gate)
+  4. Agent writes NO source files - plan artifacts only (.tmp/plans/)
+
+category: developer
+agent: core/openplanner
+model: anthropic/claude-sonnet-4-5
+
+prompt: "Plan adding a `--dry-run` flag to the CLI: read the repo, find the argument parsing and affected commands, then draft an implementation plan. Do not write any code."
+
+# Expected behavior - task path with approval gate
+behavior:
+  requiresApproval: true        # Approval required before finalizing plan
+  minToolCalls: 2               # ContextScout + at least one repo read
+  mustCallSubagents:
+    - ContextScout              # Discovery is mandatory
+  mustNotWrite:
+    - "**/*.ts"                # NEVER implements source
+    - "**/*.js"
+    - "**/*.py"
+  mayWrite:
+    - ".tmp/plans/**"          # Plan artifacts only, after approval
+
+# Expected violations
+expectedViolations:
+  - rule: approval-gate
+    shouldViolate: false
+    severity: error
+    description: Must request approval with Stage 4 draft before writing plan files
+  - rule: no-implementation
+    shouldViolate: false
+    severity: error
+    description: Must NOT write or edit source code under any circumstance
+
+approvalStrategy:
+  type: approve-plan-only     # Approve the Stage 4 draft, deny any source edits
+
+timeout: 120000
+
+tags:
+  - planning
+  - grounding
+  - critical-rules
+  - core

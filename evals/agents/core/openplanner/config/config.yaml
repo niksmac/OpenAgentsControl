@@ -1,0 +1,13 @@
+# OpenPlanner (Core Planning Agent) Test Configuration
+# Category-based path format
+
+agent: core/openplanner
+model: anthropic/claude-sonnet-4-5
+timeout: 60000
+
+# Test suite configuration
+suites:
+  - smoke
+  - critical-rules
+  - planning
+  - grounding

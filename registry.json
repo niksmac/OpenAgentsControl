@@ -111,6 +111,34 @@
         "category": "core"
       },
       {
+        "id": "openplanner",
+        "name": "OpenPlanner",
+        "type": "agent",
+        "path": ".opencode/agent/core/openplanner.md",
+        "description": "Planning agent that reads the repo and produces implementation plans for features and bugfixes from specs, screenshots, or instructions",
+        "tags": [
+          "planning",
+          "analysis",
+          "design"
+        ],
+        "dependencies": [
+          "subagent:documentation",
+          "subagent:task-manager",
+          "subagent:architecture-analyzer",
+          "subagent:story-mapper",
+          "subagent:prioritization-engine",
+          "subagent:contract-manager",
+          "subagent:adr-manager",
+          "subagent:contextscout",
+          "subagent:externalscout",
+          "context:standards-code",
+          "context:task-delegation-basics",
+          "context:component-planning",
+          "context:external-libraries-workflow"
+        ],
+        "category": "core"
+      },
+      {
         "id": "openagent",
         "name": "OpenAgent",
         "type": "agent",
@@ -150,6 +178,76 @@
         ],
         "dependencies": [],
         "category": "essential"
+      },
+      {
+        "id": "architecture-analyzer",
+        "name": "ArchitectureAnalyzer",
+        "type": "subagent",
+        "path": ".opencode/agent/subagents/planning/architecture-analyzer.md",
+        "description": "DDD-driven architecture analyzer identifying bounded contexts, module boundaries, and domain relationships for multi-stage orchestration",
+        "tags": [
+          "planning",
+          "architecture",
+          "ddd"
+        ],
+        "dependencies": [],
+        "category": "standard"
+      },
+      {
+        "id": "story-mapper",
+        "name": "StoryMapper",
+        "type": "subagent",
+        "path": ".opencode/agent/subagents/planning/story-mapper.md",
+        "description": "User journey mapping specialist transforming user needs into epics, stories, and vertical slices with bounded context alignment",
+        "tags": [
+          "planning",
+          "stories",
+          "user-journeys"
+        ],
+        "dependencies": [],
+        "category": "standard"
+      },
+      {
+        "id": "prioritization-engine",
+        "name": "PrioritizationEngine",
+        "type": "subagent",
+        "path": ".opencode/agent/subagents/planning/prioritization-engine.md",
+        "description": "Scores and prioritizes backlog items using RICE/WSJF frameworks with MVP/post-MVP release slicing",
+        "tags": [
+          "planning",
+          "prioritization",
+          "mvp"
+        ],
+        "dependencies": [],
+        "category": "standard"
+      },
+      {
+        "id": "contract-manager",
+        "name": "ContractManager",
+        "type": "subagent",
+        "path": ".opencode/agent/subagents/planning/contract-manager.md",
+        "description": "API contract management specialist enabling parallel development through contract-first design with OpenAPI/Swagger support",
+        "tags": [
+          "planning",
+          "contracts",
+          "api"
+        ],
+        "dependencies": [],
+        "category": "standard"
+      },
+      {
+        "id": "adr-manager",
+        "name": "ADRManager",
+        "type": "subagent",
+        "path": ".opencode/agent/subagents/planning/adr-manager.md",
+        "description": "Architecture Decision Record specialist capturing decisions, context, alternatives, and consequences in lightweight ADR format",
+        "tags": [
+          "planning",
+          "architecture",
+          "decisions"
+        ],
+        "dependencies": [],
+        "category": "standard"
       },
       {
         "id": "image-specialist",
@@ -3214,6 +3312,7 @@
       "components": [
         "agent:openagent",
         "agent:opencoder",
+        "agent:openplanner",
         "subagent:task-manager",
         "subagent:frontend-specialist",
         "subagent:mobile-design-specialist",
@@ -3293,6 +3392,7 @@
       "components": [
         "agent:openagent",
         "agent:opencoder",
+        "agent:openplanner",
         "agent:eval-runner",
         "agent:copywriter",
         "agent:technical-writer",
@@ -3350,6 +3450,7 @@
       "components": [
         "agent:openagent",
         "agent:opencoder",
+        "agent:openplanner",
         "agent:system-builder",
         "agent:repo-manager",
         "agent:eval-runner",

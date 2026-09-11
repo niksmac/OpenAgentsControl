@@ -141,6 +141,21 @@ curl -fsSL https://raw.githubusercontent.com/niksmac/OpenAgentsControl/main/upda
 
 > Use `--install-dir PATH` if you installed to a custom location (e.g. `~/.config/opencode`).
 
+**Getting newly added agents:** the two scripts do different jobs —
+`update.sh` refreshes files you already have, `upgrade.sh` adds registered
+components you're missing (existing files are never touched). When a new
+agent ships (e.g. OpenPlanner):
+
+```bash
+# Add everything your profile is missing (default profile: developer)
+curl -fsSL https://raw.githubusercontent.com/niksmac/OpenAgentsControl/main/upgrade.sh | bash -s -- --profile developer
+
+# Or add a single component plus its dependencies
+curl -fsSL https://raw.githubusercontent.com/niksmac/OpenAgentsControl/main/upgrade.sh | bash -s -- --component agent:openplanner
+
+# Preview first with --dry-run; custom locations with --install-dir PATH
+```
+
 ### Step 2: Start Building
 
 ```bash
@@ -413,6 +428,29 @@ opencode --agent OpenCoder
 
 **Perfect for:** Production code, complex features, team development
 
+### OpenPlanner (Planning & Scoping)
+
+**Best for:** Implementation plans for features and bugfixes - before any code is written
+
+```bash
+opencode --agent OpenPlanner
+> "Plan user authentication from this spec: docs/specs/auth.md"  # Spec → plan
+> "This screenshot is the new dashboard — plan the work"         # Image → plan
+> "Login fails on Safari, here are the logs. Plan the fix."      # Bugfix → plan
+```
+
+**What it does:**
+- **Intake:** Normalizes specs, screenshots, instructions, bug reports
+- **Discover:** ContextScout + repo reads (every path verified, never invented)
+- **Draft:** Lightweight proposal (you approve before anything is written)
+- **Finalize:** Writes `.tmp/plans/{id}/plan.md` + `context.md` after approval
+- **Handoff:** Routes the approved plan to OpenCoder for implementation
+
+**Never writes source code.** Plans only — harness-enforced by a scoped-write
+permission block (edit/write denied outside `.tmp/plans/`).
+
+**Perfect for:** Scoping features, root-cause-first bugfix plans, refactors, migrations, plan-then-build with OpenCoder
+
 ### SystemBuilder (Custom AI Systems)
 
 **Best for:** Building complete custom AI systems tailored to your domain
@@ -433,6 +471,7 @@ Interactive wizard generates orchestrators, subagents, context files, workflows,
 ### 🤖 Main Agents
 - **OpenAgent** - General tasks, questions, learning (start here)
 - **OpenCoder** - Production development, complex features
+- **OpenPlanner** - Implementation plans for features and bugfixes (plans only, hands off to OpenCoder)
 - **SystemBuilder** - Generate custom AI systems
 
 ### 🔧 Specialized Subagents (Auto-delegated)
