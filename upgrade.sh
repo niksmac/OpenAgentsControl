@@ -16,6 +16,7 @@
 #   ./upgrade.sh                                    # profile=developer
 #   ./upgrade.sh --profile full                     # explicit profile
 #   ./upgrade.sh --component agent:openplanner      # single component (+deps)
+#   ./upgrade.sh --refresh --component agent:openplanner  # re-fetch even if present
 #   ./upgrade.sh --install-dir PATH --dry-run       # preview only
 #
 # Environment variables:
@@ -59,6 +60,7 @@ PROFILE="developer"
 PROFILE_EXPLICIT=false
 CUSTOM_INSTALL_DIR=""
 DRY_RUN=false
+REFRESH=false
 EXTRA_COMPONENTS=""
 
 TEMP_DIR="/tmp/opencode-upgrade-$$"
@@ -66,6 +68,7 @@ trap 'rm -rf "$TEMP_DIR" 2>/dev/null || true' EXIT INT TERM
 
 ADDED=0
 PRESENT=0
+REFRESHED=0
 FAILED=0
 FAILED_FILES=""
 
@@ -91,13 +94,19 @@ print_header() {
 }
 
 print_usage() {
-    echo "Usage: $0 [--profile NAME] [--component type:id] [--install-dir PATH] [--dry-run]"
+    echo "Usage: $0 [--profile NAME] [--component type:id] [--refresh] [--install-dir PATH] [--dry-run]"
     echo ""
     echo "Options:"
     echo "  --profile NAME       Registry profile to sync (default: developer)"
     echo "  --component type:id  Add one component plus its dependencies"
     echo "                       (repeatable, e.g. --component agent:openplanner;"
     echo "                       without --profile, syncs only these)"
+    echo "  --refresh            Re-fetch files even when already present."
+    echo "                       Without it, existing files are never touched,"
+    echo "                       so modifications to components you already have"
+    echo "                       (e.g. openplanner.md permission fix) report as"
+    echo "                       'already present'. Use --refresh (optionally with"
+    echo "                       --component) to pull the latest version."
     echo "  --install-dir PATH   Target installation directory"
     echo "  --dry-run            List what would be added, change nothing"
     echo "  --help               Show this help message"
@@ -313,21 +322,42 @@ sync_missing() {
                 relative_path="$registry_path"
             fi
             local dest="${install_dir}/${relative_path}"
-            if [ -f "$dest" ]; then
+            if [ -f "$dest" ] && [ "$REFRESH" != true ]; then
                 PRESENT=$((PRESENT + 1))
                 continue
             fi
+            local exists_before=false
+            [ -f "$dest" ] && exists_before=true
             if [ "$DRY_RUN" = true ]; then
-                echo "  would add: $relative_path  ($comp)"
+                if [ "$exists_before" = true ]; then
+                    echo "  would refresh: $relative_path  ($comp)"
+                else
+                    echo "  would add: $relative_path  ($comp)"
+                fi
                 ADDED=$((ADDED + 1))
                 continue
             fi
             mkdir -p "$(dirname "$dest")"
+            local backup=""
+            if [ "$exists_before" = true ]; then
+                backup="${dest}.upgrade-backup"
+                cp "$dest" "$backup" 2>/dev/null || true
+            fi
             if fetch_file "$registry_path" "$dest"; then
-                print_success "Added $relative_path"
-                ADDED=$((ADDED + 1))
+                [ -n "$backup" ] && rm -f "$backup"
+                if [ "$exists_before" = true ]; then
+                    print_success "Refreshed $relative_path"
+                    REFRESHED=$((REFRESHED + 1))
+                else
+                    print_success "Added $relative_path"
+                    ADDED=$((ADDED + 1))
+                fi
             else
-                rm -f "$dest"
+                if [ "$exists_before" = true ] && [ -f "$backup" ]; then
+                    mv "$backup" "$dest"
+                else
+                    rm -f "$dest"
+                fi
                 print_warning "Failed to fetch $relative_path"
                 FAILED=$((FAILED + 1))
                 FAILED_FILES="${FAILED_FILES} $relative_path"
@@ -357,6 +387,8 @@ parse_args() {
                 CUSTOM_INSTALL_DIR="$2"; shift 2 ;;
             --install-dir=*)
                 CUSTOM_INSTALL_DIR="${1#*=}"; shift ;;
+            --refresh|--force)
+                REFRESH=true; shift ;;
             --dry-run)
                 DRY_RUN=true; shift ;;
             --help|-h)
@@ -419,13 +451,22 @@ main() {
     print_info "Tracking $wanted_count component(s) incl. dependencies"
 
     print_step "Syncing missing files (existing files are never touched)..."
+    if [ "$REFRESH" = true ]; then
+        print_info "Refresh mode: existing files will be re-fetched"
+    fi
     sync_missing "$install_dir"
 
     echo ""
     if [ "$DRY_RUN" = true ]; then
-        print_info "Dry-run result: $ADDED file(s) would be added, $PRESENT already present"
+        print_info "Dry-run result: $ADDED file(s) would be added/refreshed, $PRESENT already present"
     else
-        print_success "Upgrade complete: $ADDED added, $PRESENT already present, $FAILED failed"
+        print_success "Upgrade complete: $ADDED added, $REFRESHED refreshed, $PRESENT already present, $FAILED failed"
+    fi
+    if [ "$PRESENT" -gt 0 ] && [ "$ADDED" -eq 0 ] && [ "$REFRESHED" -eq 0 ] && [ "$REFRESH" != true ]; then
+        print_info "Nothing new to add. If you expected updates to files you already"
+        print_info "have (e.g. a fix to agent:openplanner), re-run with --refresh:"
+        print_info "  $0 --refresh --component agent:openplanner"
+        print_info "Or refresh everything you already have with update.sh."
     fi
     if [ -n "$FAILED_FILES" ]; then
         print_warning "Failed files:$FAILED_FILES"

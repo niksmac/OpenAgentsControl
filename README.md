@@ -154,6 +154,11 @@ curl -fsSL https://raw.githubusercontent.com/niksmac/OpenAgentsControl/main/upgr
 curl -fsSL https://raw.githubusercontent.com/niksmac/OpenAgentsControl/main/upgrade.sh | bash -s -- --component agent:openplanner
 
 # Preview first with --dry-run; custom locations with --install-dir PATH
+
+# Already have it but want latest changes (e.g. a fix to an agent you
+# already installed)? By default upgrade never touches existing files,
+# so re-running reports "already present". Add --refresh:
+curl -fsSL https://raw.githubusercontent.com/niksmac/OpenAgentsControl/main/upgrade.sh | bash -s -- --refresh --component agent:openplanner
 ```
 
 ### Step 2: Start Building
